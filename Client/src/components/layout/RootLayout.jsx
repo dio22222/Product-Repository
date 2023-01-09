@@ -2,7 +2,7 @@ import { NavLink, Outlet } from "react-router-dom";
 
 const RootLayout = () => {
   return (
-    <div className="root-layout">
+    <>
       <header>
         <nav>
           <NavLink to="/">Home</NavLink>
@@ -12,7 +12,7 @@ const RootLayout = () => {
       <main>
         <Outlet />
       </main>
-    </div>
+    </>
   );
 };
 
