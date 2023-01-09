@@ -5,17 +5,23 @@ import {
   RouterProvider
 } from 'react-router-dom'
 
-import './App.css'
 import Home from './pages/Home'
 import AddProduct from './pages/AddProduct'
 import RootLayout from './components/layout/RootLayout'
+
+// Styles
+import './App.css'
+import './components/layout/global.scss'
+
+// Bootstrap JS
+import 'bootstrap/dist/js/bootstrap'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<RootLayout />}>
       <Route index element={<Home />} />
       <Route path="add-product" element={<AddProduct />} />
-    </Route> 
+    </Route>
   )
 )
 

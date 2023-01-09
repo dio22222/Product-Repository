@@ -1,0 +1,7 @@
+// Overriding Bootstrap
+$theme-colors: (
+    "primary": green
+);
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap.scss'
