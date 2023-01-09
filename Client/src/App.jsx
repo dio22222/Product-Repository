@@ -10,8 +10,7 @@ import AddProduct from './pages/AddProduct'
 import RootLayout from './components/layout/RootLayout'
 
 // Styles
-import './App.css'
-import './components/layout/global.scss'
+import './assets/styles/global.scss'
 
 // Bootstrap JS
 import 'bootstrap/dist/js/bootstrap'
