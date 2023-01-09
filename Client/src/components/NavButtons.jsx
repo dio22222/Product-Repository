@@ -11,7 +11,7 @@ const NavButtons = (props) => {
       :
       <>
         <button>Save</button>
-        <Link>Cancel</Link>
+        <Link replace to={'/'}>Cancel</Link>
       </>
      } 
   </div>
