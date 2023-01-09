@@ -1,12 +1,15 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom"
+import NavButtons from '../NavButtons'
 
 const RootLayout = () => {
+  let currentPath = useLocation()
+
   return (
     <>
       <header>
         <nav>
           <NavLink to="/">Home</NavLink>
-          <NavLink to="add-product">Add Product</NavLink>
+          <NavButtons path={currentPath.pathname}/>
         </nav>
       </header>
       <main>
@@ -16,4 +19,4 @@ const RootLayout = () => {
   );
 };
 
-export default RootLayout;
+export default RootLayout
