@@ -1,20 +1,23 @@
 import { Link } from 'react-router-dom'
 
+import '../assets/styles/NavButtons.scss'
+
 const NavButtons = (props) => {
   return (
-  <div className="nav-links">
+  <>
     {props.path === '/' ? 
-      <>
+      <div className="nav-buttons">
         <Link to="add-product">Add Product</Link>
-        <button>Mass Delete</button>
-      </>
+        <button className='btn btn-danger'>Mass Delete</button>
+      </div>
       :
-      <>
-        <button>Save</button>
-        <Link replace to={'/'}>Cancel</Link>
-      </>
+      <div className="nav-buttons">
+        <button className='btn btn-success'>Save</button>
+        <Link replace to={'/'} className='btn btn-danger text-light'>Cancel</Link>
+      </div>
+      
      } 
-  </div>
+  </>
   )
 }
 

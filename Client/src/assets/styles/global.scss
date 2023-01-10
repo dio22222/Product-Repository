@@ -1,7 +1,30 @@
+// @import '../../.?./node_modules/bootstrap/scss/functions';
+
 // Overriding Bootstrap
-$theme-colors: (
-    "primary": green
-);
+$primary: #6291a9;
+
+@font-face {
+    font-family: 'WorkSans';
+    src: url(../fonts/WorkSans-VariableFont_wght.ttf), format('ttf');
+}
+
+@font-face {
+    font-family: 'WorkSans-Italic';
+    src: url(../fonts/WorkSans-Italic-VariableFont_wght.ttf), format('ttf');
+}
+
+$font-family-sans-serif: 'WorkSans', sans-serif;
 
 // Bootstrap
-@import 'bootstrap/scss/bootstrap.scss'
+@import '../../../node_modules/bootstrap/scss/bootstrap.scss';
+
+// My Global Styles
+a,
+a:active,
+a:focus,
+a:visited,
+a:hover,
+a:link {
+    text-decoration: none;
+    color: black;
+}

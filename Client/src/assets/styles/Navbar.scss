@@ -1,0 +1,58 @@
+#main-navigation {
+
+    padding: .7em;
+    align-items: center;
+    font-size: large;
+    
+    .nav-logo {
+        color: #ffe7d5;
+        margin-bottom: 0;
+    }
+
+    a {
+        color: whitesmoke;
+    }
+
+    #home-link {
+        font-size: larger;
+
+        &:hover {
+            &::after {
+                content: "";
+                display: block;
+                width: 2.8em;
+                height: .2em;
+                background-color: orange;
+                border-radius: 3px;
+                animation: underline 300ms ease-in-out;
+                animation-direction: normal;
+            }
+        }
+    }
+
+    .active {
+        
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 2.8em;
+            height: .2em;
+            background-color: orange;
+            border-radius: 3px;
+            animation: underline 300ms ease-in-out;
+            animation-direction: normal;
+        }
+        
+    }
+
+}
+
+@keyframes underline {
+    0% {
+        transform: scaleX(0);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
