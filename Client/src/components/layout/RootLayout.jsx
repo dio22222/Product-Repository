@@ -1,6 +1,7 @@
 import { NavLink, Outlet, useLocation } from "react-router-dom"
 import NavButtons from '../NavButtons'
 import '../../assets/styles/Navbar.scss'
+import '../../assets/styles/Main.scss'
 
 const RootLayout = () => {
   let currentPath = useLocation()
@@ -14,7 +15,7 @@ const RootLayout = () => {
           <NavButtons path={currentPath.pathname}/>
         </nav>
       </header>
-      <main>
+      <main className="container">
         <Outlet />
       </main>
     </>

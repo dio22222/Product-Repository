@@ -1,6 +1,9 @@
 const AddProduct = () => {
     return (
-        <h1>Add Product</h1>
+        <>
+        <h1 className="page-title">Add Product</h1>
+        <hr />
+        </>
     )
 }
 
