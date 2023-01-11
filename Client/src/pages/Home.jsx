@@ -1,4 +1,4 @@
-import Product from '../components/Product'
+import ProductList from '../components/ProductList'
 import '../assets/styles/Home.scss'
 
 const MOCK_PRODUCTS = [
@@ -149,15 +149,7 @@ const Home = () => {
         <>
           <h1 className="page-title">Product List</h1>
           <hr />
-          <div className="product-list container-fluid d-flex flex-wrap justify-content-center">
-              {MOCK_PRODUCTS.map((product, index) => (
-                <Product key={index}
-                         sku={product.sku}
-                         name={product.name}
-                         price={product.price}
-                         attribute={product.attribute} />
-              ))}
-          </div>
+          <ProductList productList={MOCK_PRODUCTS}/>
         </>
     )
 }
