@@ -122,6 +122,26 @@ const MOCK_PRODUCTS = [
       amount: [1.5, 3, 0.8]
     }
   },
+  {
+    sku: 'TRI120556',
+    name: 'Desk',
+    price: 50.00,
+    attribute: {
+      title: 'Dimensions',
+      unit: 'm',
+      amount: [1.5, 3, 0.8]
+    }
+  },
+  {
+    sku: 'TRI120556',
+    name: 'Desk',
+    price: 50.00,
+    attribute: {
+      title: 'Dimensions',
+      unit: 'm',
+      amount: [1.5, 3, 0.8]
+    }
+  },
 ]
 
 const Home = () => {
@@ -130,11 +150,12 @@ const Home = () => {
           <h1 className="page-title">Product List</h1>
           <hr />
           <div className="product-list container-fluid d-flex flex-wrap justify-content-center">
-              {MOCK_PRODUCTS.map(product => (
-                <Product sku={product.sku}
-                        name={product.name}
-                        price={product.price}
-                        attribute={product.attribute} />
+              {MOCK_PRODUCTS.map((product, index) => (
+                <Product key={index}
+                         sku={product.sku}
+                         name={product.name}
+                         price={product.price}
+                         attribute={product.attribute} />
               ))}
           </div>
         </>
