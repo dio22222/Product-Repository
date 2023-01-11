@@ -1,4 +1,5 @@
 import Product from '../components/Product'
+import '../assets/styles/ProductList.scss'
 
 function ProductList(props) {
     return (
