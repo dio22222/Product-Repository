@@ -3,7 +3,7 @@
     padding: .7em;
     align-items: center;
     font-size: large;
-    
+
     .nav-logo {
         // color: #ffe6d3;
         color: #fff;
@@ -16,7 +16,9 @@
 
     #home-link {
         font-size: larger;
-        position: relative;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
 
         &:hover {
             &::after {
