@@ -12,7 +12,7 @@ const RootLayout = () => {
         <nav className="navbar bg-primary" id="main-navigation">
           <h2 className="nav-logo">Product Repository</h2>
           <NavLink to="/" id="home-link">Home</NavLink>
-          <NavButtons path={currentPath.pathname}/>
+          <NavButtons path={currentPath.pathname} className="nav-buttons"/>
         </nav>
       </header>
       <main className="container">
