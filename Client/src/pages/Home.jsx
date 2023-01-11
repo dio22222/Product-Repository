@@ -33,7 +33,7 @@ const MOCK_PRODUCTS = [
     }
   },
   {
-    sku: 'GGWP0007',
+    sku: 'GGWP0008',
     name: 'Steel',
     price: 4.00,
     attribute: {
@@ -63,7 +63,7 @@ const MOCK_PRODUCTS = [
     }
   },
   {
-    sku: 'JVC200123',
+    sku: 'JVC200126',
     name: 'Acme DISC',
     price: 1.00,
     attribute: {
@@ -73,7 +73,7 @@ const MOCK_PRODUCTS = [
     }
   },
   {
-    sku: 'JVC200124',
+    sku: 'JVC200127',
     name: 'Acme DISC',
     price: 2.00,
     attribute: {
@@ -83,7 +83,7 @@ const MOCK_PRODUCTS = [
     }
   },
   {
-    sku: 'JVC200125',
+    sku: 'JVC200128',
     name: 'Acme DISC',
     price: 3.00,
     attribute: {
@@ -103,7 +103,7 @@ const MOCK_PRODUCTS = [
     }
   },
   {
-    sku: 'TR120555',
+    sku: 'TR120556',
     name: 'Chair',
     price: 30.00,
     attribute: {
@@ -113,7 +113,7 @@ const MOCK_PRODUCTS = [
     }
   },
   {
-    sku: 'TRI120556',
+    sku: 'TRI120550',
     name: 'Desk',
     price: 50.00,
     attribute: {
@@ -123,7 +123,7 @@ const MOCK_PRODUCTS = [
     }
   },
   {
-    sku: 'TRI120556',
+    sku: 'TRI120558',
     name: 'Desk',
     price: 50.00,
     attribute: {
@@ -133,7 +133,7 @@ const MOCK_PRODUCTS = [
     }
   },
   {
-    sku: 'TRI120556',
+    sku: 'TRI120559',
     name: 'Desk',
     price: 50.00,
     attribute: {
