@@ -16,11 +16,13 @@
 
     #home-link {
         font-size: larger;
+        position: relative;
 
         &:hover {
             &::after {
                 content: "";
                 display: block;
+                position: absolute;
                 width: 2.8em;
                 height: .2em;
                 background-color: orange;
