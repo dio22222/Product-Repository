@@ -1,3 +1,5 @@
-.nav-buttons > * {
-    margin: 0 .7em;
+.nav-buttons {
+    > :not(:last-child) {
+        margin-right: 1em;
+    }
 }
