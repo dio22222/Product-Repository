@@ -29,7 +29,7 @@ export const SelectedProductsContextProvider = (props) => {
         unselectProduct: unselectProductHandler,
     }
 
-    console.log(context)
+    // console.log(context)
     
     return <SelectedProductsContext.Provider value={context}>
         { props.children }

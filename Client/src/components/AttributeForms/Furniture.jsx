@@ -1,9 +1,9 @@
-const Furniture = () => {
+const Furniture = (props) => {
   return (
     <>
     <div className="mb-3">
       <label htmlFor="height" className="form-label">Height (CM)</label>
-      <input type="number" className="form-control" id="height" step={1}/>
+      <input type="number" className="form-control" id="height" step={1} onChange={props.onFormValueChange}/>
     </div>
     <div className="mb-3">
       <label htmlFor="width" className="form-label">Width (CM)</label>
