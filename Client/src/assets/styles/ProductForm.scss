@@ -1,0 +1,26 @@
+#product_form {
+
+    label {
+        font-size: larger;
+        font-weight: 500;
+        color: #3a6c9c;
+    }
+
+    input {
+        font-size: large;
+    }
+
+    select {
+        font-size: large;
+        color: #3a6c9c;
+
+        option {
+            // color: #3a6c9c;
+        }
+    }
+
+    .attribute-form {
+        padding: 1em;
+    }
+
+}
