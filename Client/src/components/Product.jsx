@@ -24,14 +24,16 @@ const Product = (props) => {
     }) : amount
 
   return (
-    <div id={props.id} className="product d-flex flex-column p-4 m-3">
-      <div className='d-flex'>
-        <input type="checkbox" name="" onChange={handleCheck} />
+    <div id={props.id} className="product d-flex flex-column m-3">
+      <div className='product-head d-flex'>
+        <input className='select-product' type="checkbox" name="" onChange={handleCheck} />
         <div className='sku'>{props.sku}</div>
       </div>
-      <h5 className='name m-0'>{props.name}</h5>
-      <div className='price'>${props.price}</div>
-      <div className='attribute'>{props.attribute.title}: { amountFormated }{props.attribute.unit}</div>
+      <div className="product-body">
+        <h5 className='name'>{props.name}</h5>
+        <div className='price'>${props.price}</div>
+        <div className='attribute'>{props.attribute.title}: { amountFormated }{props.attribute.unit}</div>
+      </div>
     </div>
   );
 };

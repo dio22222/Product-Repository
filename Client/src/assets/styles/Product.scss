@@ -6,5 +6,38 @@
     // background-color: #b9deff;
     // background-color: #5d7183;
     background-color: #5b7b99;
-    color: #fff
+    color: #fff;
+    padding: .7em 1em 1em 1em;
+
+    .product-head {
+
+        align-items: center;
+        margin-bottom: .5em;
+
+        .select-product {
+            width: 1em;
+            height: 1em;
+        }
+
+        .sku {
+            margin-left: .5em;
+            color: #cce6ff;
+        }
+    }
+
+    .product-body {
+        margin-left: 1.2em;
+
+        &> :not(:last-child) {
+            margin-bottom: .4em;
+        }
+
+        .price {
+            color: #afff23;
+        }
+
+        .attribute {
+            color: #f1f1f1;
+        }
+    }
 }
