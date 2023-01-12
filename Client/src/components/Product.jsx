@@ -26,7 +26,7 @@ const Product = (props) => {
   return (
     <div id={props.id} className="product d-flex flex-column m-3">
       <div className='product-head d-flex'>
-        <input className='select-product' type="checkbox" name="" onChange={handleCheck} />
+        <input className='delete-checkbox' type="checkbox" name="" onChange={handleCheck} />
         <div className='sku'>{props.sku}</div>
       </div>
       <div className="product-body">

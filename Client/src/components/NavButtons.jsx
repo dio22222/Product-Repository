@@ -11,7 +11,7 @@ const NavButtons = (props) => {
     return (
       <div className="nav-buttons">
         <Link className='btn btn-primary' to="add-product">Add Product</Link>
-        <button className='btn btn-danger' disabled={ totalProductsSelected === 0 }>
+        <button id='delete-product-btn' className='btn btn-danger' disabled={ totalProductsSelected === 0 }>
           { totalProductsSelected > 1 ? 'Mass Delete' : 'Delete' }
         </button>
       </div>
