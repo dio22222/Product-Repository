@@ -10,7 +10,7 @@ const NavButtons = (props) => {
   if (props.path === '/') {
     return (
       <div className="nav-buttons">
-        <Link to="add-product">Add Product</Link>
+        <Link className='btn btn-primary' to="add-product">Add Product</Link>
         <button className='btn btn-danger' disabled={ totalProductsSelected === 0 }>
           { totalProductsSelected > 1 ? 'Mass Delete' : 'Delete' }
         </button>
