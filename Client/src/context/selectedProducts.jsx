@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react"
+import { createContext, useState } from "react"
 
 const SelectedProductsContext = createContext({
     products: [],
@@ -29,9 +29,7 @@ export const SelectedProductsContextProvider = (props) => {
         unselectProduct: unselectProductHandler,
     }
 
-    useEffect(() => {
-        console.log(context)
-    }, [selectedProducts])
+    console.log(context)
     
     return <SelectedProductsContext.Provider value={context}>
         { props.children }

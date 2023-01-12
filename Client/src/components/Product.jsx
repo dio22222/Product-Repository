@@ -1,26 +1,17 @@
-import { useState, useEffect, useRef } from 'react';
+import { useContext } from 'react';
+import SelectedProductsContext from '../context/selectedProducts';
 import '../assets/styles/Product.scss'
 
 const Product = (props) => {
-
-  const isFirstRender = useRef(true)
-
-  const [checked, setChecked] = useState(false)
+  const selectedProductsContext = useContext(SelectedProductsContext)
 
   const handleCheck = (e) => {
-    setChecked(e.target.checked)
-  }
-
-  useEffect(() => { // Check if Redundant
-    // Don't handle Initial Checked State (false)
-    if (isFirstRender.current) {
-      isFirstRender.current = false
-      return
+    if (e.target.checked) {
+      selectedProductsContext.selectProduct(props.id)
+    } else {
+      selectedProductsContext.unselectProduct(props.id)
     }
-    
-    // Lift State to ProductList
-    props.handleProductSelection(props.id, checked)
-  }, [checked])
+  }
 
   return (
     <div id={props.id} className="product d-flex flex-column p-4 m-3">
