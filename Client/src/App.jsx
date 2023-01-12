@@ -8,6 +8,7 @@ import {
 import Home from './pages/Home'
 import AddProduct from './pages/AddProduct'
 import RootLayout from './components/layout/RootLayout'
+import { SelectedProductsContextProvider } from './context/selectedProducts'
 
 // Styles
 import './assets/styles/global.scss'
@@ -27,7 +28,9 @@ const router = createBrowserRouter(
 function App() {
 
   return (
-    <RouterProvider router={router} />
+    <SelectedProductsContextProvider>
+      <RouterProvider router={router} />
+    </SelectedProductsContextProvider>
   )
 }
 

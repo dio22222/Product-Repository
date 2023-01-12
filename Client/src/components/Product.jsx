@@ -11,7 +11,7 @@ const Product = (props) => {
     setChecked(e.target.checked)
   }
 
-  useEffect(() => {
+  useEffect(() => { // Check if Redundant
     // Don't handle Initial Checked State (false)
     if (isFirstRender.current) {
       isFirstRender.current = false
@@ -19,12 +19,11 @@ const Product = (props) => {
     }
     
     // Lift State to ProductList
-    props.handleProductSelection(props.sku, checked)
-
+    props.handleProductSelection(props.id, checked)
   }, [checked])
 
   return (
-    <div className="product d-flex flex-column p-4 m-3">
+    <div id={props.id} className="product d-flex flex-column p-4 m-3">
       <div className='d-flex'>
         <input type="checkbox" name="" onChange={handleCheck} />
         <div className='sku'>{props.sku}</div>
