@@ -41,23 +41,17 @@ const ProductForm = () => {
     }, [formValues])
 
     const formValuesChangeHandler = (e) => {
+        // console.log(e.target)
+
         switch (e.target.id) {
             case 'sku':
-                setFormValues((previousState) => {
-                    return {...previousState, sku: e.target.value}
-                })
-                break;
             case 'name':
-                setFormValues((previousState) => {
-                    return {...previousState, name: e.target.value}
-                })
-                break;
             case 'price':
                 setFormValues((previousState) => {
                     return {...previousState, price: e.target.value}
                 })
                 break;
-            case 'weight': 
+            case 'weight':
             case 'size':
                 setFormValues((previousState) => {
                     return {...previousState, typeValues: [e.target.value]}
@@ -65,19 +59,19 @@ const ProductForm = () => {
                 break;
             case 'height':
                 setFormValues((previousState) => {
-                    return {...previousState, typeValues: [e.target.value, previousState.typeValues[1] === undefined && 0, previousState.typeValues[2] === undefined && 0]}
+                    return {...previousState, typeValues: [e.target.value, previousState.typeValues[1] ?? 0, previousState.typeValues[2] ?? 0]}
                 })
                 break;
-                case 'width':
-                    setFormValues((previousState) => {
-                        return {...previousState, typeValues: [e.target.value, previousState.typeValues[1] === undefined && 0, previousState.typeValues[2] === undefined && 0]}
-                    })
-                    break;
-                case 'length':
-                    setFormValues((previousState) => {
-                        return {...previousState, typeValues: [e.target.value, previousState.typeValues[1] === undefined && 0, previousState.typeValues[2] === undefined && 0]}
-                    })
-                    break;
+            case 'width':
+                setFormValues((previousState) => {
+                    return {...previousState, typeValues: [previousState.typeValues[0] ?? 0, e.target.value, previousState.typeValues[2] ?? 0]}
+                })
+                break;
+            case 'length':
+                setFormValues((previousState) => {
+                    return {...previousState, typeValues: [previousState.typeValues[0] ?? 0, previousState.typeValues[1] ?? 0, e.target.value]}
+                })
+                break;
         }
     }
 
@@ -94,7 +88,7 @@ const ProductForm = () => {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="price" className="form-label">Price ($)</label>
-                    <input type="number" id="price" step={0.01} className="form-control" onChange={formValuesChangeHandler} aria-describedby="price_help_text" />
+                    <input type="text" id="price" className="form-control" onChange={formValuesChangeHandler} aria-describedby="price_help_text" />
                     <div id="price_help_text" className="form-text">Decimal Separator must be represented by a dot.</div>
                 </div>
                 <div className="mb-3">
