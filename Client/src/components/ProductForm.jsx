@@ -8,14 +8,11 @@ import '../assets/styles/ProductForm.scss'
 const ProductForm = () => {
     const initialRender = useRef(true)
 
-    // Task: Merge Product Type with Form Values
-    const [productType, setProductType] = useState('')
-
     const [formValues, setFormValues] = useState({
         sku: "",
         name: "",
         price: "",
-        type: productType,
+        productType: "",
         typeValues: [],
     })
 
@@ -103,31 +100,12 @@ const ProductForm = () => {
         formValuesChangeHandler(e)
     }
 
-    const productTypeChangeHandler = (e) => {
-        setProductType(e.target.value)
-    }
-
-
-    useEffect(() => {
-        if (initialRender.current) {
-            initialRender.current = false
-            return
-        }
-
-        setFormValues((previousState) => {
-            return {...previousState, type: productType}
-        })
-    }, [productType])
-
-    useEffect(() => {
-        console.log(formValues)
-    }, [formValues])
-
     const formValuesChangeHandler = (e) => {
         switch (e.target.id) {
             case 'sku':
             case 'name':
             case 'price':
+            case 'productType':
                 setFormValues((previousState) => {
                     return {...previousState, [e.target.id]: e.target.value}
                 })
@@ -156,6 +134,10 @@ const ProductForm = () => {
         }
     }
 
+    useEffect(() => {
+        console.log(formValues)
+    }, [formValues])
+
     return (
         <div className="container">
             <form id="product_form">
@@ -182,7 +164,7 @@ const ProductForm = () => {
                     <div id="price_help_text" className="form-text">Decimal Separator must be represented by a dot.</div>
                 </div>
                 <div className="mb-3">
-                    <select className="form-select" id="productType" defaultValue={'Product Type'} onChange={productTypeChangeHandler}>
+                    <select className="form-select" id="productType" defaultValue={'Product Type'} onChange={formValuesChangeHandler}>
                         <option id='initial' hidden>Product Type</option>
                         <option id="DVD">DVD</option>
                         <option id="Furniture">Furniture</option>
@@ -190,9 +172,9 @@ const ProductForm = () => {
                     </select>
                 </div>
                 <div className="container attribute-form">
-                    { productType === 'DVD' && <DVD onInputChange={handleNumberInputValidation} inputIsValid={numberInputIsValid} inputWasTouched={inputWasTouched} /> }
-                    { productType === 'Furniture' && <Furniture onInputChange={handleNumberInputValidation} inputIsValid={numberInputIsValid} inputWasTouched={inputWasTouched} /> }
-                    { productType === 'Book' && <Book onInputChange={handleNumberInputValidation} inputIsValid={numberInputIsValid} inputWasTouched={inputWasTouched} /> }
+                    { formValues.productType === 'DVD' && <DVD onInputChange={handleNumberInputValidation} inputIsValid={numberInputIsValid} inputWasTouched={inputWasTouched} /> }
+                    { formValues.productType === 'Furniture' && <Furniture onInputChange={handleNumberInputValidation} inputIsValid={numberInputIsValid} inputWasTouched={inputWasTouched} /> }
+                    { formValues.productType === 'Book' && <Book onInputChange={handleNumberInputValidation} inputIsValid={numberInputIsValid} inputWasTouched={inputWasTouched} /> }
                 </div>
             </form>
         </div>
