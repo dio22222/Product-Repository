@@ -8,6 +8,7 @@ import '../assets/styles/ProductForm.scss'
 const ProductForm = () => {
     const initialRender = useRef(true)
 
+    // State Variables
     const [formValues, setFormValues] = useState({
         sku: "",
         name: "",
@@ -41,6 +42,7 @@ const ProductForm = () => {
         length: false,
     })
 
+    // Input Validation
     const handleTextInputValidation = (e) => {
         setInputWasTouched(previousState => {
             return {...previousState, [e.target.id]: true}
@@ -100,6 +102,7 @@ const ProductForm = () => {
         formValuesChangeHandler(e)
     }
 
+    // Form Values State Update
     const formValuesChangeHandler = (e) => {
         switch (e.target.id) {
             case 'sku':
@@ -134,6 +137,7 @@ const ProductForm = () => {
         }
     }
 
+    // For Debugging
     useEffect(() => {
         console.log(formValues)
     }, [formValues])
