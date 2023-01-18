@@ -1,11 +1,14 @@
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import SelectedProductsContext from '../context/selectedProducts'
+import FormValuesContext from '../context/formValues'
 
 import '../assets/styles/NavButtons.scss'
 
 const NavButtons = (props) => {
   const { totalProductsSelected } = useContext(SelectedProductsContext)
+  const { formValid } = useContext(FormValuesContext)
+
 
   if (props.path === '/') {
     return (
@@ -20,7 +23,7 @@ const NavButtons = (props) => {
 
   return (
     <div className="nav-buttons">
-      <button className='btn btn-success'>Save</button>
+      <button className='btn btn-success' disabled={ !formValid }>Save</button>
       <Link replace to={'/'} className='btn btn-danger text-light'>Cancel</Link>
     </div>
   )

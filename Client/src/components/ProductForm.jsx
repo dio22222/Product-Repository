@@ -1,21 +1,13 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useContext } from "react";
 import DVD from "./AttributeForms/DVD";
 import Furniture from "./AttributeForms/Furniture";
 import Book from "./AttributeForms/Book";
+import FormValuesContext from '../context/formValues'
+
 import '../assets/styles/ProductForm.scss'
 
-// Task: Move Form Values State in Global State (Context) for better separation of concerns and access to State from Save Button 
 const ProductForm = () => {
-    const initialRender = useRef(true)
-
-    // State Variables
-    const [formValues, setFormValues] = useState({
-        sku: "",
-        name: "",
-        price: "",
-        productType: "",
-        typeValues: [],
-    })
+    const formValuesContext = useContext(FormValuesContext)
 
     const [textInputIsValid, setTextInputIsValid] = useState({
         sku: false,
@@ -53,7 +45,7 @@ const ProductForm = () => {
                 return {...previousState, [e.target.id]: false}
             })
 
-            formValuesChangeHandler(e)
+            formValuesContext.formValuesChange(e)
             return
         }
 
@@ -61,7 +53,7 @@ const ProductForm = () => {
             return {...previousState, [e.target.id]: true}
         })
 
-        formValuesChangeHandler(e)
+        formValuesContext.formValuesChange(e)
     }
 
     const handleNumberInputValidation = (e) => {
@@ -75,7 +67,7 @@ const ProductForm = () => {
             })
 
             // If the input value is not a Number, replace the previous Form Value with an empty String, to indicate that the Input is Invalid.
-            formValuesChangeHandler({...e, target: {id: e.target.id, value: ''}})
+            formValuesContext.formValuesChange({...e, target: {id: e.target.id, value: ''}})
             return
         }
         
@@ -84,7 +76,7 @@ const ProductForm = () => {
                 return {...previousState, [e.target.id]: false}
             })
             
-            formValuesChangeHandler(e)
+            formValuesContext.formValuesChange(e)
             return
         }
 
@@ -95,52 +87,12 @@ const ProductForm = () => {
         // If the Number Input has a leftover dot at the end, remove it
         if (e.target.value.slice(-1) === '.') {
             // Don't provide the DOM Element itself (e.target), because the removal of the dot from the value makes writting a dot on the input impossible.
-            formValuesChangeHandler({...e, target: {id: e.target.id, value: e.target.value.slice(0, -1)}})
+            formValuesContext.formValuesChange({...e, target: {id: e.target.id, value: e.target.value.slice(0, -1)}})
             return
         }
 
-        formValuesChangeHandler(e)
+        formValuesContext.formValuesChange(e)
     }
-
-    // Form Values State Update
-    const formValuesChangeHandler = (e) => {
-        switch (e.target.id) {
-            case 'sku':
-            case 'name':
-            case 'price':
-            case 'productType':
-                setFormValues((previousState) => {
-                    return {...previousState, [e.target.id]: e.target.value}
-                })
-                break;
-            case 'weight':
-            case 'size':
-                setFormValues((previousState) => {
-                    return {...previousState, typeValues: [e.target.value]}
-                })
-                break;
-            case 'height':
-                setFormValues((previousState) => {
-                    return {...previousState, typeValues: [e.target.value, previousState.typeValues[1] ?? '', previousState.typeValues[2] ?? '']}
-                })
-                break;
-            case 'width':
-                setFormValues((previousState) => {
-                    return {...previousState, typeValues: [previousState.typeValues[0] ?? '', e.target.value, previousState.typeValues[2] ?? '']}
-                })
-                break;
-            case 'length':
-                setFormValues((previousState) => {
-                    return {...previousState, typeValues: [previousState.typeValues[0] ?? '', previousState.typeValues[1] ?? '', e.target.value]}
-                })
-                break;
-        }
-    }
-
-    // For Debugging
-    useEffect(() => {
-        console.log(formValues)
-    }, [formValues])
 
     return (
         <div className="container">
@@ -168,7 +120,7 @@ const ProductForm = () => {
                     <div id="price_help_text" className="form-text">Decimal Separator must be represented by a dot.</div>
                 </div>
                 <div className="mb-3">
-                    <select className="form-select" id="productType" defaultValue={'Product Type'} onChange={formValuesChangeHandler}>
+                    <select className="form-select" id="productType" defaultValue={'Product Type'} onChange={formValuesContext.formValuesChange}>
                         <option id='initial' hidden>Product Type</option>
                         <option id="DVD">DVD</option>
                         <option id="Furniture">Furniture</option>
@@ -176,9 +128,9 @@ const ProductForm = () => {
                     </select>
                 </div>
                 <div className="container attribute-form">
-                    { formValues.productType === 'DVD' && <DVD onInputChange={handleNumberInputValidation} inputIsValid={numberInputIsValid} inputWasTouched={inputWasTouched} /> }
-                    { formValues.productType === 'Furniture' && <Furniture onInputChange={handleNumberInputValidation} inputIsValid={numberInputIsValid} inputWasTouched={inputWasTouched} /> }
-                    { formValues.productType === 'Book' && <Book onInputChange={handleNumberInputValidation} inputIsValid={numberInputIsValid} inputWasTouched={inputWasTouched} /> }
+                    { formValuesContext.productType === 'DVD' && <DVD onInputChange={handleNumberInputValidation} inputIsValid={numberInputIsValid} inputWasTouched={inputWasTouched} /> }
+                    { formValuesContext.productType === 'Furniture' && <Furniture onInputChange={handleNumberInputValidation} inputIsValid={numberInputIsValid} inputWasTouched={inputWasTouched} /> }
+                    { formValuesContext.productType === 'Book' && <Book onInputChange={handleNumberInputValidation} inputIsValid={numberInputIsValid} inputWasTouched={inputWasTouched} /> }
                 </div>
             </form>
         </div>

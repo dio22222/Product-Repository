@@ -9,6 +9,7 @@ import Home from './pages/Home'
 import AddProduct from './pages/AddProduct'
 import RootLayout from './components/layout/RootLayout'
 import { SelectedProductsContextProvider } from './context/selectedProducts'
+import { FormValuesContextProvider } from './context/formValues'
 
 // Styles
 import './assets/styles/global.scss'
@@ -28,9 +29,11 @@ const router = createBrowserRouter(
 function App() {
 
   return (
-    <SelectedProductsContextProvider>
-      <RouterProvider router={router} />
-    </SelectedProductsContextProvider>
+    <FormValuesContextProvider>
+      <SelectedProductsContextProvider>
+        <RouterProvider router={router} />
+      </SelectedProductsContextProvider>
+    </FormValuesContextProvider>
   )
 }
 
