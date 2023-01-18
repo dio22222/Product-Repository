@@ -53,6 +53,7 @@ const ProductForm = () => {
             setTextInputIsValid(previousState => {
                 return {...previousState, [e.target.id]: false}
             })
+
             formValuesChangeHandler(e)
             return
         }
@@ -74,9 +75,12 @@ const ProductForm = () => {
                 return {...previousState, [e.target.id]: false}
             })
 
-            formValuesChangeHandler(e)
+            // If the input value is not a Number, replace the previous Form Value with an empty String, to indicate that the Input is Invalid.
+            formValuesChangeHandler({...e, target: {id: e.target.id, value: ''}})
             return
-        } else if (e.target.value === '') {
+        }
+        
+        if (e.target.value === '') {
             setNumberInputIsValid(previousState => {
                 return {...previousState, [e.target.id]: false}
             })
@@ -91,7 +95,7 @@ const ProductForm = () => {
 
         // If the Number Input has a leftover dot at the end, remove it
         if (e.target.value.slice(-1) === '.') {
-            // Don't provide the DOM Element itself (e.target), because the removal of the dot from the value makes writting a dot on the input impossible. 
+            // Don't provide the DOM Element itself (e.target), because the removal of the dot from the value makes writting a dot on the input impossible.
             formValuesChangeHandler({...e, target: {id: e.target.id, value: e.target.value.slice(0, -1)}})
             return
         }
@@ -136,17 +140,17 @@ const ProductForm = () => {
                 break;
             case 'height':
                 setFormValues((previousState) => {
-                    return {...previousState, typeValues: [e.target.value, previousState.typeValues[1] ?? 0, previousState.typeValues[2] ?? 0]}
+                    return {...previousState, typeValues: [e.target.value, previousState.typeValues[1] ?? '', previousState.typeValues[2] ?? '']}
                 })
                 break;
             case 'width':
                 setFormValues((previousState) => {
-                    return {...previousState, typeValues: [previousState.typeValues[0] ?? 0, e.target.value, previousState.typeValues[2] ?? 0]}
+                    return {...previousState, typeValues: [previousState.typeValues[0] ?? '', e.target.value, previousState.typeValues[2] ?? '']}
                 })
                 break;
             case 'length':
                 setFormValues((previousState) => {
-                    return {...previousState, typeValues: [previousState.typeValues[0] ?? 0, previousState.typeValues[1] ?? 0, e.target.value]}
+                    return {...previousState, typeValues: [previousState.typeValues[0] ?? '', previousState.typeValues[1] ?? '', e.target.value]}
                 })
                 break;
         }
