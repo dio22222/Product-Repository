@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react"
+import { createContext, useState } from "react"
 
 const FormValuesContext = createContext({
     sku: "",
@@ -25,9 +25,15 @@ export const FormValuesContextProvider = (props) => {
             case 'sku':
             case 'name':
             case 'price':
-            case 'productType':
                 setFormValues((previousState) => {
                     return {...previousState, [e.target.id]: e.target.value}
+                })
+                break;
+            case 'productType':
+                console.log('Product Type Change')
+                setFormValues((previousState) => {
+                    // In this step, also empty the Type Values array, to reflect a change in Product Type
+                    return {...previousState, [e.target.id]: e.target.value, typeValues: []}
                 })
                 break;
             case 'weight':
@@ -54,14 +60,14 @@ export const FormValuesContextProvider = (props) => {
         }
     }
 
-    // Task: Fix a bug that when the product type is furniture and all previous values are present, handleFormValidation returns True for some reason ..
     const handleFormValidation = () => {
         for (const value in formValues) {
             if (formValues[value] instanceof Array) {
                 if (formValues[value].length === 0) return false
-                formValues[value].forEach(item => {
-                    if (item === '') return false    
-                })
+
+                for (let item in formValues[value]) {
+                    if (formValues[value][item] === '') return false
+                }
             }
 
             if (formValues[value] === '') return false
